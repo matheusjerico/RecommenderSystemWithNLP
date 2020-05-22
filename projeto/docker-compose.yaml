@@ -1,0 +1,42 @@
+version: '3'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: desafio-big-data:latest
+    container_name: desafio-big-data
+    command: ./run.sh
+    working_dir: /code
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: test-desafio-big-data:latest
+    container_name: test-desafio-big-data
+    working_dir: /code
+    command: python /code/tests/test.py
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo
+    container_name: "mongodb"
+    ports:
+      - 27017:27017
+    environment:
+      - MONGODB_DATA_DIR=/data/db
+      - MONDODB_LOG_DIR=/dev/null
+    volumes:
+      - mongodbdata:/data/db
+    command: --quiet
+
+
+volumes:
+  mongodbdata:
+    driver: local
