@@ -1,5 +1,5 @@
 ## Sistema de Recomendação utilizando Processamento de Linguagem Natural
-================
+---
 
 ## Considerações Gerais
 
