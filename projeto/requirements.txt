@@ -5,7 +5,7 @@ numpy==1.18.4
 nltk
 scikit-learn==0.22.2
 beautifulsoup4==4.9.0
-requests==2.23.0
+requests==2.31.0
 pytest==5.4.1
 pymongo==3.10.1
 flask_pymongo==2.3.0
